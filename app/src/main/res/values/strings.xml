@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FirebaseApp</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_senha">Senha</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_criar_conta">Criar conta</string>
+    <string name="txt_logout">Logout</string>
+    <string name="txt_enviar_email">Enviar Email</string>
 </resources>

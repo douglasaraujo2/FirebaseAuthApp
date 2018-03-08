@@ -44,7 +44,14 @@ class LoginActivity : AppCompatActivity() {
             mAuth?.signInWithEmailAndPassword(tilEmail.getText(), tilPass.getText())?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = mAuth?.getCurrentUser()
-                    updateUI(user)
+                    if (user != null) {
+                        if(user.isEmailVerified){
+                            updateUI(user)
+                        }else{
+                            Toast.makeText(this,"E-mail não confirmado, verifique sua caixa de entrada",Toast.LENGTH_SHORT).show()  
+                        }
+                    }
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("LoginAcitivity", "signInWithEmail:failure", task.exception)
@@ -53,6 +60,20 @@ class LoginActivity : AppCompatActivity() {
                     updateUI(null)
                 }
             }
+        }
+        btnEnviar.setOnClickListener {
+            val user = mAuth?.currentUser
+
+            user?.sendEmailVerification()?.addOnCompleteListener(this, OnCompleteListener {
+                task ->
+                if(task.isSuccessful){
+                    Toast.makeText(this,"Email enviado para: "+user?.email,Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+        btnLogout.setOnClickListener {
+            mAuth?.signOut()
+            Toast.makeText(this,"Logou Realizado",Toast.LENGTH_SHORT).show()
         }
     }
 
