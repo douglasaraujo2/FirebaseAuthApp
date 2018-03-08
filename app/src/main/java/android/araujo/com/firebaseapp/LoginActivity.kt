@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
                         if(user.isEmailVerified){
                             updateUI(user)
                         }else{
-                            Toast.makeText(this,"E-mail não confirmado, verifique sua caixa de entrada",Toast.LENGTH_SHORT).show()  
+                            Toast.makeText(this,"E-mail não confirmado, verifique sua caixa de entrada",Toast.LENGTH_SHORT).show()
                         }
                     }
 
@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
         }
         btnLogout.setOnClickListener {
             mAuth?.signOut()
-            Toast.makeText(this,"Logou Realizado",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Logout Realizado",Toast.LENGTH_SHORT).show()
         }
     }
 
